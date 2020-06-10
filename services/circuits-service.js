@@ -1,10 +1,32 @@
-const queries = require('../data')
+const queries = require('../data').circuitqueries
 
-//No business logic, just passes data up another layer
+//No business logic, just passes param to data layer
 const getFastestLaps = async (circuitid) => {
   try{
-    const rows = await queries.queries.fastestLaps(circuitid)
-    return rows
+    const data = await queries.fastestLaps(circuitid)
+    return data
+  } catch (err){
+      console.log(err.stack)
+      throw new Error(err.message)
+  }
+}
+
+//No business logic, just passes param to data layer
+const getCircuitInfo = async (circuitid) => {
+  try{
+    const data = await queries.info(circuitid)
+    return data
+  } catch (err){
+      console.log(err.stack)
+      throw new Error(err.message)
+  }
+}
+
+//No business logic, just passes param to data layer
+const getRaceDates = async (circuitid) => {
+  try{
+    const data = await queries.raceDates(circuitid)
+    return data
   } catch (err){
       console.log(err.stack)
       throw new Error(err.message)
@@ -12,5 +34,7 @@ const getFastestLaps = async (circuitid) => {
 }
 
 module.exports = {
-  getFastestLaps: getFastestLaps
+  getFastestLaps: getFastestLaps,
+  getCircuitInfo: getCircuitInfo,
+  getRaceDates: getRaceDates
 }

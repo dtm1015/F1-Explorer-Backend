@@ -1,5 +1,7 @@
-const queries = require('./queries')
+const circuitqueries = require('./circuit-queries')
+const racequeries = require('./race-queries')
 
 module.exports = {
-  queries: queries
+  circuitqueries: circuitqueries,
+  racequeries: racequeries
 }

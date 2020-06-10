@@ -18,8 +18,9 @@ module.exports = {
         console.log('executed query', { text, duration, rows: res.rowCount })
         return res
     } catch (err){
-      console.log("Conection Failure")
+      console.log("Conection to postgres failed")
       console.log(err.stack)
+      throw new Error(err.message)
     }
   }
 }
